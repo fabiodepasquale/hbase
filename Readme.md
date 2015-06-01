@@ -1,35 +1,65 @@
-HBase Single Node
+HBase Nodo singolo
 -----------------
 
-we start from the image java:8-jdk
+Immagine di partenza java:8-jdk
 
-Steps
+Steps 
 -----
+### 0. Avviare e connettere docker, docker-machime o boot2docker
 
-### 1. Build the images
+Es. con boot2docker scrivere nel terminale Git Bash
+```bash
+boot2docker start
+boot2docker ssh
+```
+
+### 1. Creare una cartella ed accedervi
+
+Creare una cartella in cui scaricare la repository
+
+```bash
+
+mkdir laboratorio
+cd laboratorio
+
+```
+
+### 2. Clonare la repository ed accedervi
+
+```bash
+
+git clone https://github.com/fabiodepasquale/hbase.git
+cd hbase
+
+```
+
+
+### 3. Build immagine
 
 Go to the folder containing the *Dockerfile* and run
 
 ```bash
-
- docker build --tag=wheretolive/hbase:single ./
-
+ docker build --tag=hbase:single ./
 ```
 
-### 2. run the images
+Su boot2docker usare questo
+```bash
+ sudo docker build --tag=hbase:single ./
+```
 
+
+### 4. Avviare l'immagine
+
+avvia l'immagine in modalità demone con porte 2181, 60010, 60000, 60020 e 60030 aperte
 ```bash
 
-docker run -d -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase wheretolive/hbase:single
-
-
+docker run -d -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase hbase:single
 
 ```
 
-### Notes
+### Nota
 
-1.	the parameter -h set the container hostname
-2.	if you use boot2docker or docker-machine (non linux os!!!), add an entry to etc/hosts
+1.	Con boot2docker o docker-machine aggiungere il comando
 
 ```bash
 
@@ -38,10 +68,19 @@ sudo nano private/etc/hosts
 and add <ip docker machine> hbase-single
 ```
 
-### 3. connect to the image
+### 5. Connessione all'immagine 
 
 ```bash
 
 docker exec -it hbase bash
 
 ```
+
+### 6. Avviare la shell
+
+```bash
+
+hbase shell
+
+```
+
