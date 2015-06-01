@@ -34,9 +34,9 @@ cd hbase
 ```
 
 
-### 3. Build immagine
+### 3. Montare l'immagine
 
-Go to the folder containing the *Dockerfile* and run
+Fare il build dell'immagine
 
 ```bash
  docker build --tag=hbase:single ./
