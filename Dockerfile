@@ -5,7 +5,7 @@ MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 
 RUN wget --quiet -O - http://apache.panu.it/hbase/1.0.1.1/hbase-1.0.1.1-bin.tar.gz | tar --directory /usr/local -xzf -
-RUN ln -s /usr/local/hbase-1.0.1 /usr/local/hbase
+RUN ln -s /usr/local/hbase-1.0.1.1 /usr/local/hbase
 
 ENV PATH $PATH:/usr/local/hbase/bin
 
